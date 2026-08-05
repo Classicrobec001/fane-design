@@ -17,12 +17,6 @@ export default function Hero() {
           Let&apos;s Begin
         </PrimaryButton>
       </div>
-
-      {/* Decorative circle from the design */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -bottom-24 left-16 size-[250px] rounded-full border-[3px] border-white/30"
-      />
     </section>
   );
 }
