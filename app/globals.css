@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --content-x: clamp(20px, 7vw, 100px); /* horizontal page padding, 100px at desktop like Figma */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white text-ink font-sans antialiased;
+}
+
+/* Shared horizontal gutter matching the 100px Figma margin */
+.container-site {
+  width: 100%;
+  max-width: theme("maxWidth.site");
+  margin-inline: auto;
+  padding-inline: var(--content-x);
+}
