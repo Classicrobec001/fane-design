@@ -21,10 +21,10 @@ In Figma: select the layer → right panel → Export → PNG (2x) or SVG → Ex
 | avatar-3.png    | Home testimonial — Mo Lauren, Moderno Furnitures | PNG 2x |
 | avatar-4.png    | Home testimonial — Daniel Ace, AcePlayHouse    | PNG 2x |
 
-The avatars are circle-cropped for the home testimonial strip. Uncropped source
-portraits for four of these people also live in this folder under their names
-(`Marian Ade.png`, `Mo Lauren.png`, `Daniel Ace.png`, `Ernest Daviva.png`) — they
-feed the service detail pages below, which use a rectangular frame instead.
+The avatars are circle-cropped for the home testimonial strip. The service detail
+pages use uncropped portraits of the same people in a rectangular frame — those
+live at `services/<slug>/testimonial.png`, not here. Keep filenames free of
+spaces and colons: a colon is illegal on Windows and breaks clones there.
 
 ## Service gallery images (expandable Services section)
 
