@@ -3,6 +3,7 @@ import { Inter, Inria_Serif } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import FloatingActions from "@/components/ui/FloatingActions";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -20,9 +21,20 @@ const inria = Inria_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Fane Designs & Development",
+  // Child pages set a bare title and pick up the suffix from the template;
+  // the home page uses `default` verbatim.
+  title: {
+    default: "Fane Designs - Premium Design & Development Company",
+    template: "%s — Fane Designs",
+  },
   description:
     "Premium design & development agency creating beautiful designs and smart digital solutions.",
+  openGraph: {
+    title: "Fane Designs - Premium Design & Development Company",
+    description:
+      "Premium design & development agency creating beautiful designs and smart digital solutions.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -36,6 +48,7 @@ export default function RootLayout({
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <FloatingActions />
       </body>
     </html>
   );

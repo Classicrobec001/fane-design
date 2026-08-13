@@ -21,3 +21,20 @@ body {
   margin-inline: auto;
   padding-inline: var(--content-x);
 }
+
+/* Horizontal scroller that lines up with the page gutter on the left and runs
+   off the right edge of the viewport, so the next card is always peeking. */
+.scroller-bleed {
+  padding-left: calc(
+    max(0px, (100vw - theme("maxWidth.site")) / 2) + var(--content-x)
+  );
+  padding-right: var(--content-x);
+  /* Keeps snapped cards on the gutter instead of under it. */
+  scroll-padding-left: calc(
+    max(0px, (100vw - theme("maxWidth.site")) / 2) + var(--content-x)
+  );
+  scrollbar-width: none;
+}
+.scroller-bleed::-webkit-scrollbar {
+  display: none;
+}

@@ -7,8 +7,8 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import { SERVICES } from "@/lib/content";
 
 export default function Services() {
-  // First row starts open — mirrors the "Brand/Graphic Design" home variant.
-  const [open, setOpen] = useState<string>(SERVICES[0].slug);
+  // Starts as a clean list of six; rows open on hover (or tap/focus).
+  const [open, setOpen] = useState<string>("");
 
   return (
     <section id="services" className="bg-white py-[69px]">
@@ -23,10 +23,17 @@ export default function Services() {
         {SERVICES.map((s) => {
           const isOpen = open === s.slug;
           return (
-            <div key={s.slug} className="border-b border-muted">
-              {/* Row header — click to toggle */}
+            <div
+              key={s.slug}
+              // Hover opens the row on pointer devices; the panel lives inside this
+              // wrapper so moving into it doesn't collapse the row.
+              onMouseEnter={() => setOpen(s.slug)}
+              className="border-b border-muted"
+            >
+              {/* Row header — click/focus also toggles, for touch + keyboard */}
               <button
                 onClick={() => setOpen(isOpen ? "" : s.slug)}
+                onFocus={() => setOpen(s.slug)}
                 aria-expanded={isOpen}
                 className="w-full text-left"
               >

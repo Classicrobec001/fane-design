@@ -91,6 +91,68 @@ export const SERVICES: Service[] = [
   },
   {
     no: "02",
+    title: "Product & UI/UX Design",
+    desc: "Thoughtful UX and beautiful UI that users love and businesses rely on.",
+    longDesc:
+      "For early-stage teams who need to validate fast — and for established product teams that need a design system or a full UX overhaul. We solve the problems your users feel but can't articulate, through research-led design that balances beauty with measurable function.",
+    slug: "product-design",
+    cta: "View product design",
+    href: "/services/product-design",
+    gallery: [
+      "/assets/gallery/product-design-1.png",
+      "/assets/gallery/product-design-2.png",
+      "/assets/gallery/product-design-3.png",
+    ],
+    capabilities: [
+      "UX research & audits",
+      "User flows & journey mapping",
+      "Wireframing",
+      "Interface design & UI systems",
+      "Prototyping & micro-interactions",
+      "Design systems",
+      "Mobile & web applications",
+      "Stakeholder interviews",
+    ],
+    action: "detail",
+    detail: {
+      deliverables: [
+        "UX research report",
+        "User flow diagrams",
+        "High fidelity design",
+        "Interactive prototypes",
+        "Wireframes",
+        "Developer handoff specs",
+        "Usability testing",
+      ],
+      relatedWork: [
+        {
+          category: "Laundry & dry cleaning",
+          name: "Fame Laundry",
+          image: "/assets/services/product-design/work-1.png",
+        },
+        {
+          category: "Food & beverage",
+          name: "Food Rush",
+          image: "/assets/services/product-design/work-2.png",
+        },
+        {
+          category: "Logistics",
+          name: "Zenvoy",
+          image: "/assets/services/product-design/work-3.png",
+        },
+      ],
+      testimonial: {
+        brand: "Food Rush",
+        quote:
+          "SLOW CLAP!! Way to go! We were all impressed. This was the exact goal. Take a bow and pop something.",
+        name: "Marian Ade",
+        role: "CEO, Food Rush & Treats",
+        image: "/assets/services/product-design/testimonial.png",
+      },
+    },
+  },
+  {
+    no: "03",
     title: "Web Design & Development",
     desc: "Your 24/7 sales representative — high-converting websites that work while you sleep.",
     longDesc:
@@ -149,68 +211,6 @@ export const SERVICES: Service[] = [
         name: "Daniel Ace",
         role: "Founder, AcePlayHouse",
         image: "/assets/services/web/testimonial.png",
-      },
-    },
-  },
-  {
-    no: "03",
-    title: "Product & UI/UX Design",
-    desc: "Thoughtful UX and beautiful UI that users love and businesses rely on.",
-    longDesc:
-      "For early-stage teams who need to validate fast — and for established product teams that need a design system or a full UX overhaul. We solve the problems your users feel but can't articulate, through research-led design that balances beauty with measurable function.",
-    slug: "product-design",
-    cta: "View product design",
-    href: "/services/product-design",
-    gallery: [
-      "/assets/gallery/product-design-1.png",
-      "/assets/gallery/product-design-2.png",
-      "/assets/gallery/product-design-3.png",
-    ],
-    capabilities: [
-      "UX research & audits",
-      "User flows & journey mapping",
-      "Wireframing",
-      "Interface design & UI systems",
-      "Prototyping & micro-interactions",
-      "Design systems",
-      "Mobile & web applications",
-      "Stakeholder interviews",
-    ],
-    action: "detail",
-    detail: {
-      deliverables: [
-        "UX research report",
-        "User flow diagrams",
-        "High fidelity design",
-        "Interactive prototypes",
-        "Wireframes",
-        "Developer handoff specs",
-        "Usability testing",
-      ],
-      relatedWork: [
-        {
-          category: "Laundry & dry cleaning",
-          name: "Fame Laundry",
-          image: "/assets/services/product-design/work-1.png",
-        },
-        {
-          category: "Food & beverage",
-          name: "Food Rush",
-          image: "/assets/services/product-design/work-2.png",
-        },
-        {
-          category: "Logistics",
-          name: "Zenvoy",
-          image: "/assets/services/product-design/work-3.png",
-        },
-      ],
-      testimonial: {
-        brand: "Food Rush",
-        quote:
-          "SLOW CLAP!! Way to go! We were all impressed. This was the exact goal. Take a bow and pop something.",
-        name: "Marian Ade",
-        role: "CEO, Food Rush & Treats",
-        image: "/assets/services/product-design/testimonial.png",
       },
     },
   },
@@ -435,7 +435,15 @@ export const WORKS = [
 export type CaseSection =
   | { type: "text"; eyebrow: string; title: string; body: string }
   | { type: "image"; src: string }
-  | { type: "split"; eyebrow: string; title: string; body: string; src: string }
+  // `video` takes over the media slot when set; `src` stays as the image fallback.
+  | {
+      type: "split";
+      eyebrow: string;
+      title: string;
+      body: string;
+      src: string;
+      video?: { mp4: string; webm?: string; poster?: string; portrait?: boolean };
+    }
   | { type: "splitText"; eyebrow: string; title: string; body: string };
 
 export type CaseStudy = {
@@ -576,6 +584,11 @@ export const PROJECTS: Project[] = [
           title: "Digital Presence",
           body: "The mobile app was designed to simplify the shipping and delivery experience. Intuitive navigation, real-time shipment tracking, and a streamlined booking flow make it easy for customers to schedule deliveries, monitor their packages, and manage shipments without unnecessary friction.",
           src: "/assets/works/zenvoy/digital.png",
+          video: {
+            mp4: "/assets/works/zenvoy/digital.mp4",
+            poster: "/assets/works/zenvoy/digital-poster.jpg",
+            portrait: true,
+          },
         },
         {
           type: "splitText",

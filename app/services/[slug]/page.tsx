@@ -11,9 +11,7 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { slug: string } }) {
   const service = SERVICES.find((s) => s.slug === params.slug);
   return {
-    title: service
-      ? `${service.title} — Fane Designs & Development`
-      : "Service — Fane Designs & Development",
+    title: service ? service.title : "Service",
   };
 }
 
@@ -117,19 +115,31 @@ export default function ServiceDetailPage({
       {/* Testimonial */}
       {detail && (
         <section className="bg-brand text-white">
-          <div className="container-site py-14">
-            <p className="mb-10 text-[32px] font-semibold">{detail.testimonial.brand}</p>
-            <div className="flex flex-col items-start gap-10 lg:flex-row lg:items-center lg:gap-16">
-              <div className="flex flex-1 flex-col gap-16">
-                <p className="text-[24px] font-medium leading-10">
+          <div className="container-site relative pb-24 pt-[52px]">
+            {/* Four markers pinned to the corners of the content box. */}
+            <span className="absolute left-[var(--content-x)] top-[52px] size-2.5 bg-white" />
+            <span className="absolute right-[var(--content-x)] top-[52px] size-2.5 bg-white" />
+            <span className="absolute bottom-24 left-[var(--content-x)] size-2.5 bg-white" />
+            <span className="absolute bottom-24 right-[var(--content-x)] size-2.5 bg-white" />
+
+            {/* Cleared past the top-left marker. */}
+            <p className="pl-[18px] text-[24px] font-semibold sm:text-[28px]">
+              {detail.testimonial.brand}
+            </p>
+
+            {/* The quote column sits inset from the brand name, not flush left. */}
+            <div className="mt-10 flex flex-col gap-10 lg:mt-[52px] lg:flex-row lg:items-center lg:gap-[153px] lg:pl-[250px]">
+              <div className="flex flex-col gap-10 lg:w-[605px] lg:shrink-0 lg:gap-[100px]">
+                <p className="text-[20px] font-medium leading-9 sm:text-[24px] sm:leading-10">
                   “{detail.testimonial.quote}”
                 </p>
                 <div className="flex flex-col gap-2">
-                  <p className="text-[16px]">{detail.testimonial.name}</p>
+                  <p className="text-[16px] font-medium">{detail.testimonial.name}</p>
                   <p className="text-[14px] text-white/90">{detail.testimonial.role}</p>
                 </div>
               </div>
-              <div className="h-[262px] w-[212px] shrink-0 overflow-hidden bg-white/10">
+              {/* Centred on phones so the corner markers don't land on it. */}
+              <div className="mx-auto h-[264px] w-[212px] shrink-0 overflow-hidden bg-white/10 lg:mx-0">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={detail.testimonial.image}

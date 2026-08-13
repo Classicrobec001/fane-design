@@ -2,7 +2,7 @@ import Link from "next/link";
 import { PROJECTS } from "@/lib/content";
 
 export const metadata = {
-  title: "Our Works — Fane Designs & Development",
+  title: "Our Works",
   description:
     "A curated collection of projects across brand, product, platform design, and development.",
 };

@@ -4,7 +4,7 @@ import { SERVICES, SERVICES_INTRO, METHOD } from "@/lib/content";
 import CTA from "@/components/home/CTA";
 
 export const metadata = {
-  title: "Our Services — Fane Designs & Development",
+  title: "Our Services",
   description: SERVICES_INTRO.body,
 };
 

@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { PROJECTS } from "@/lib/content";
+import CaseVideo from "@/components/ui/CaseVideo";
 
 // Pages that have a composed "Next Project" banner image at
 // /assets/works/<slug>/next.png (text baked in). Others fall back to
@@ -24,9 +25,7 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { slug: string } }) {
   const project = PROJECTS.find((p) => p.slug === params.slug);
   return {
-    title: project
-      ? `${project.name} — Fane Designs & Development`
-      : "Project — Fane Designs & Development",
+    title: project ? project.name : "Project",
   };
 }
 
@@ -143,10 +142,31 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                   <h2 className="text-[40px] font-semibold text-ink sm:text-[48px]">{section.title}</h2>
                   <p className="text-[24px] font-medium leading-10 text-muted">{section.body}</p>
                 </div>
-                <div className="h-[400px] w-full overflow-hidden rounded-lg bg-neutral-100">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={section.src} alt="" className="size-full object-cover" />
-                </div>
+                {section.video ? (
+                  // Portrait clips sit centred at their own aspect ratio; a
+                  // cover-crop would slice a phone recording down to a band.
+                  <div
+                    className={`flex w-full items-center justify-center overflow-hidden rounded-lg bg-neutral-100 ${
+                      section.video.portrait ? "h-[520px] py-6" : "h-[400px]"
+                    }`}
+                  >
+                    <CaseVideo
+                      mp4={section.video.mp4}
+                      webm={section.video.webm}
+                      poster={section.video.poster ?? section.src}
+                      className={
+                        section.video.portrait
+                          ? "h-full w-auto rounded-lg object-contain"
+                          : "size-full object-cover"
+                      }
+                    />
+                  </div>
+                ) : (
+                  <div className="h-[400px] w-full overflow-hidden rounded-lg bg-neutral-100">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={section.src} alt="" className="size-full object-cover" />
+                  </div>
+                )}
               </div>
             </section>
           );
