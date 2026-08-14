@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -9,6 +9,14 @@ import { SERVICES } from "@/lib/content";
 export default function Services() {
   // Starts as a clean list of six; rows open on hover (or tap/focus).
   const [open, setOpen] = useState<string>("");
+
+  // Below md there's no hover to hint that the rows expand, so the first one
+  // starts open — its panel is the cue that the rest are tappable too.
+  useEffect(() => {
+    if (window.matchMedia("(max-width: 767px)").matches) {
+      setOpen(SERVICES[0].slug);
+    }
+  }, []);
 
   return (
     <section id="services" className="bg-white py-[69px]">

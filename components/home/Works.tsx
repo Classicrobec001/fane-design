@@ -47,20 +47,20 @@ export default function Works() {
           </h2>
           <div className="hidden items-center gap-6 sm:flex">
             <button
-              onClick={() => scroll(1)}
-              disabled={!canNext}
-              aria-label="Next projects"
-              className={arrow}
-            >
-              <ChevronRight className="size-6" />
-            </button>
-            <button
               onClick={() => scroll(-1)}
               disabled={!canPrev}
               aria-label="Previous projects"
               className={arrow}
             >
               <ChevronLeft className="size-6" />
+            </button>
+            <button
+              onClick={() => scroll(1)}
+              disabled={!canNext}
+              aria-label="Next projects"
+              className={arrow}
+            >
+              <ChevronRight className="size-6" />
             </button>
           </div>
         </div>
